@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.robotemi.sdk.BatteryData;
 import com.robotemi.sdk.NlpResult;
 import com.robotemi.sdk.Robot;
 import com.robotemi.sdk.TtsRequest;
@@ -46,7 +47,10 @@ public class MainActivity extends AppCompatActivity implements
         Robot.TtsListener,
         OnBeWithMeStatusChangedListener,
         OnGoToLocationStatusChangedListener,
-        OnLocationsUpdatedListener
+        OnLocationsUpdatedListener,
+        OnBatteryStatusChangedListener,
+        OnConstraintBeWithStatusChangedListener,
+        OnDetectionStateChangedListener
 {
     FrameLayout main_container;
     Robot robot;
@@ -180,9 +184,9 @@ public class MainActivity extends AppCompatActivity implements
 //        robot.addWakeupWordListener(this);
         robot.addTtsListener(this);
         robot.addOnLocationsUpdatedListener(this);
-        robot.addOnBatteryStatusChangedListener((OnBatteryStatusChangedListener) this);
-        robot.addOnConstraintBeWithStatusChangedListener((OnConstraintBeWithStatusChangedListener) this);
-        robot.addOnDetectionStateChangedListener((OnDetectionStateChangedListener) this);
+        robot.addOnBatteryStatusChangedListener(this);
+        robot.addOnConstraintBeWithStatusChangedListener(this);
+        robot.addOnDetectionStateChangedListener(this);
 
     }
 
@@ -210,4 +214,18 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void onBatteryStatusChanged(@org.jetbrains.annotations.Nullable BatteryData batteryData) {
+
+    }
+
+    @Override
+    public void onConstraintBeWithStatusChanged(boolean b) {
+
+    }
+
+    @Override
+    public void onDetectionStateChanged(int i) {
+
+    }
 }
