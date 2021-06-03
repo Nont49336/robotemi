@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements
     FrameLayout main_container;
     Robot robot;
     UserInfo emer;
+    private Button call_btn;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     public static String PACKAGE_NAME;
     private static final String[] PERMISSIONS_STORAGE =
@@ -74,7 +77,15 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         main_container = findViewById(R.id.main_layout);
-        robot.startTelepresence(emer.getName(),emer.getUserId());
+        call_btn = findViewById(R.id.call_btn);
+        call_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                robot.startTelepresence(emer.getName(),emer.getUserId());
+            }
+        });
+//        robot.startTelepresence(emer.getName(),emer.getUserId());
+
 
 //        changelayout(fragment_temiface.newInstance());
 
@@ -159,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements
 
     protected void onStart() {
         super.onStart();
-        robot = Robot.getInstance(); // get an instance of the robot in order to begin using its features.
+        robot = robot.getInstance(); // get an instance of the robot in order to begin using its features.
         robot.addOnRobotReadyListener(this);
 //        robot.addNlpListener(this);
         robot.addOnBeWithMeStatusChangedListener(this);
@@ -171,19 +182,19 @@ public class MainActivity extends AppCompatActivity implements
         robot.addOnBatteryStatusChangedListener((OnBatteryStatusChangedListener) this);
         robot.addOnConstraintBeWithStatusChangedListener((OnConstraintBeWithStatusChangedListener) this);
         robot.addOnDetectionStateChangedListener((OnDetectionStateChangedListener) this);
-        emer = robot.getAdminInfo();
+
     }
 
     protected void onStop() {
         super.onStop();
-        Robot.getInstance().removeOnRobotReadyListener(this);
-        Robot.getInstance().removeNlpListener(this);
-        Robot.getInstance().removeOnBeWithMeStatusChangedListener(this);
-        Robot.getInstance().removeOnGoToLocationStatusChangedListener(this);
-        Robot.getInstance().removeConversationViewAttachesListenerListener(this);
-        Robot.getInstance().removeWakeupWordListener(this);
-        Robot.getInstance().removeTtsListener(this);
-        Robot.getInstance().removeOnLocationsUpdateListener(this);
+        robot.removeOnRobotReadyListener(this);
+        robot.removeNlpListener(this);
+        robot.removeOnBeWithMeStatusChangedListener(this);
+        robot.removeOnGoToLocationStatusChangedListener(this);
+        robot.removeConversationViewAttachesListenerListener(this);
+        robot.removeWakeupWordListener(this);
+        robot.removeTtsListener(this);
+        robot.removeOnLocationsUpdateListener(this);
     }
     @Override
     public void onRobotReady(boolean isReady) {
@@ -191,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements
             try {
                 final ActivityInfo activityInfo = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
                 robot.onStart(activityInfo);
+                emer = robot.getAdminInfo();
             } catch (PackageManager.NameNotFoundException e) {
                 throw new RuntimeException(e);
             }

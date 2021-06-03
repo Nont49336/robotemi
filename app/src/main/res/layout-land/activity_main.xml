@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Temiface_activity">
+    tools:context=".Temiface_activity"
+    tools:ignore="MissingDefaultResource">
 
     <FrameLayout
         android:id="@+id/main_layout"
@@ -13,6 +14,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <Button
+            android:id="@+id/call_btn"
+            android:layout_width="544dp"
+            android:layout_height="263dp"
+            android:text="Calling" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
