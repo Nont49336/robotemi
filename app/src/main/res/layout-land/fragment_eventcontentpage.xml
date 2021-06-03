@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventcontentpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_constraintlayout_eventcontentpage"
+            android:layout_width="420dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/fragment_bg_blacktrans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.35">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/eventcontent_cardview_eventcontentpage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:background="#ffffff"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="8dp">
+
+                <LinearLayout
+                    android:id="@+id/eventcontent_linearlayout_eventcontentpage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <Space
+                        android:id="@+id/space_title_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="7" />
+
+                    <!--android:text="('Event Title')"-->
+                    <TextView
+                        android:id="@+id/title_text_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="11"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/db_helvethaicamon_x"
+                        android:gravity="start"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Event Title"
+                        android:textColor="#444149"
+                        android:textSize="35dp"
+                        android:textStyle="bold" />
+
+                    <!--android:text="('Start Date' - 'End Date')"-->
+                    <TextView
+                        android:id="@+id/timeperiod_text_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Fri 05 Mar 2021 - Sun 14 Mar 2021"
+                        android:textColor="#7C65A4"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <!--android:text="('Zone' Floor 'Floor')"-->
+                    <TextView
+                        android:id="@+id/location_text_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Robinson Floor L1"
+                        android:textColor="#7C65A4"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:id="@+id/space_location_content_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="7" />
+
+                    <!--android:text="('content')"-->
+                    <TextView
+                        android:id="@+id/content_text_eventcontentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="55"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="CONTENTHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+                        android:textColor="#968EA5"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

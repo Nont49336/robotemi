@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/button_cardview_menupage"
+    android:layout_width="265dp"
+    android:layout_height="0dp"
+    android:layout_rowWeight="1"
+    android:layout_margin="15dp"
+    card_view:cardCornerRadius="20dp"
+    card_view:cardElevation="4dp"
+    android:orientation="horizontal">
+
+    <!-- No rowWeight  android:layout_height="345dp" -->
+
+        <LinearLayout
+            android:id="@+id/button_linearlayout_menupage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <ImageButton
+                android:id="@+id/button_icon_menupage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:background="#00ffffff"
+                android:gravity="center"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/button_text_menupage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#00ffffff"
+                android:layout_weight="15"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:textColor="#131a24"
+                android:textStyle="bold" />
+        </LinearLayout>
+</androidx.cardview.widget.CardView>

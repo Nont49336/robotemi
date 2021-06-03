@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pointearningpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/pointearning_scan_box_pointearningpage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/fragment_bg_button_orangered"
+            android:elevation="24dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.85" />
+
+        <ImageView
+            android:id="@+id/qrcode_pointearningpage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="24dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fragment_qrcode_thaichana"
+            app:layout_constraintBottom_toBottomOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintEnd_toEndOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintTop_toTopOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.35"
+            app:tint="#000000" />
+
+        <TextView
+            android:id="@+id/scan_text_pointearningpage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:elevation="24dp"
+            android:fontFamily="@font/nunito_extra_bold"
+            android:gravity="center"
+            android:text="SCAN"
+            android:textColor="#283477"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintEnd_toEndOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintStart_toEndOf="@+id/qrcode_pointearningpage"
+            app:layout_constraintTop_toTopOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintVertical_bias="0.45"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/earnpoint_text_pointearningpage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:elevation="24dp"
+            android:fontFamily="@font/db_helvethaicamon_x"
+            android:gravity="center"
+            android:text="The QR code to earn point"
+            android:textColor="#283477"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/pointearning_scan_box_pointearningpage"
+            app:layout_constraintEnd_toEndOf="@+id/scan_text_pointearningpage"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintStart_toStartOf="@+id/scan_text_pointearningpage"
+            app:layout_constraintTop_toBottomOf="@+id/scan_text_pointearningpage"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.38" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

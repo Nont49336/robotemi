@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fixpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/fragment_background"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+
+    <!--*** PAGE CONTAINER ***-->
+    <FrameLayout
+        android:id="@+id/page_container_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintHeight_percent="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seaconsquare_logo_fixpage"
+        app:layout_constraintWidth_percent="0.65">
+
+        <!--container of
+            'menupage','thaichanapage','eventpage','eventcontentpage',
+            'directorypage','rateduspage','promotionpage','promotioncontentpage',
+            'pointearningpage'-->
+    </FrameLayout>
+
+
+
+    <ImageView
+        android:id="@+id/customer_service_button_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF1E2"
+        android:elevation="32dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fragment_customer_service_icon_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.467"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seaconsquare_logo_fixpage"
+        app:layout_constraintWidth_percent="0.35" />
+
+
+    <TextView
+        android:id="@+id/customer_service_text_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:elevation="32dp"
+        android:fontFamily="@font/db_helvethaicamon_x_med_cond"
+        android:gravity="center"
+        android:text="Customer Service"
+        android:textColor="#342A47"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintTop_toTopOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintVertical_bias="0.68"
+        app:layout_constraintWidth_percent="0.32" />
+
+    <TextView
+        android:id="@+id/ask_any_question_customerservice_text_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:elevation="32dp"
+        android:fontFamily="@font/db_helvethaicamon_x_bd_cond"
+        android:gravity="center"
+        android:text="Ask any question? Contact customer service."
+        android:textColor="#524765"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintStart_toStartOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintTop_toTopOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintVertical_bias="0.76"
+        app:layout_constraintWidth_percent="0.32" />
+
+
+    <ImageView
+        android:id="@+id/emergency_call_button_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fragment_emergency_call_bg_button"
+        android:elevation="24dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fragment_emergency_call_icon_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.467"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customer_service_button_fixpage"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <TextView
+        android:id="@+id/emergency_call_text_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:elevation="32dp"
+        android:fontFamily="@font/db_helvethaicamon_x_med_cond"
+        android:gravity="center"
+        android:text="Emergency Call"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintTop_toTopOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintVertical_bias="0.80"
+        app:layout_constraintWidth_percent="0.34" />
+
+    <TextView
+        android:id="@+id/case_of_emergency_call_text_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:elevation="32dp"
+        android:fontFamily="@font/db_helvethaicamon_x_bd_cond"
+        android:gravity="center"
+        android:text="Please, Contact us in case of emergency."
+        android:textColor="#B4B4B4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintStart_toStartOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintTop_toTopOf="@+id/emergency_call_button_fixpage"
+        app:layout_constraintVertical_bias="0.88"
+        app:layout_constraintWidth_percent="0.34" />
+
+
+    <ImageView
+        android:id="@+id/frame_right_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="40dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/fragment_frame_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.23" />
+
+
+
+    <ImageView
+        android:id="@+id/seaconsquare_logo_fixpage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        android:src="@drawable/fragment_seaconsquare_logo"
+        android:elevation="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.066"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/language_cardview_fixpage"
+            android:layout_margin="15dp"
+            card_view:cardCornerRadius="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintWidth_percent="0.1"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            card_view:cardElevation="36dp"
+            android:background="#00ffffff"
+            app:layout_constraintBottom_toBottomOf="@+id/seaconsquare_logo_fixpage"
+            app:layout_constraintEnd_toEndOf="@+id/seaconsquare_logo_fixpage"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/language_linearlayout_fixpage"
+                android:padding="3dp"
+                android:weightSum="100"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="#DFDFDF">
+
+                <ImageView
+                    android:id="@+id/language_global_icon_fixpage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="#00ffffff"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/fragment_language_icon_button"
+                    android:layout_weight="40" />
+
+                <TextView
+                    android:id="@+id/language_text_fixpage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="42"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center"
+                    android:text="EN"
+                    android:textColor="#808080"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/language_arrow_icon_fixpage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="#00ffffff"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/fragment_arrow_icon_button"
+                    android:layout_weight="12" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    <!--*** LANGUAGE SORT CONTAINER (Visible) ***-->
+    <!--click lauguage button   android:visibility="visible"-->
+    <!--ELSE              android:visibility="gone"-->
+    <LinearLayout
+        android:id="@+id/languagesort_container_fixpage"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="34dp"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/fragment_bg_white_stroke_blacktrans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.2"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintTop_toBottomOf="@+id/seaconsquare_logo_fixpage"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/languagesort_english_text_fixpage"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="ENGLISH"
+            android:textColor="#808080"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/languagesort_thai_text_fixpage"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="THAI"
+            android:textColor="#808080"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/frame_left_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="40dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/fragment_frame_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.26"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.13" />
+
+    <!-- *** HOME BUTTON (Visible) *** -->
+    <!--user,settings mode on menupage   android:visibility="gone"-->
+    <!--ELSE                             android:visibility="visible"-->
+    <ImageButton
+        android:id="@+id/home_button_fixpage"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00ffffff"
+        android:elevation="44dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fragment_home_icon_button"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_left_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/frame_left_fixpage"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frame_left_fixpage"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintWidth_percent="0.12" />
+
+    <!-- *** SETTINGS BUTTON (Visible) *** -->
+    <!--only user mode on menupage   android:visibility="visible"-->
+    <!--ELSE                         android:visibility="gone"-->
+    <ImageButton
+        android:id="@+id/setting_button_fixpage"
+        android:visibility="visible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00ffffff"
+        android:elevation="44dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fragment_settings_icon_button"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_left_fixpage"
+        app:layout_constraintEnd_toEndOf="@+id/frame_left_fixpage"
+        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frame_left_fixpage"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.04" />
+
+
+    <!--*** POP-UP Confirm CONTAINER (Visible) ***-->
+    <!--Confirm message   android:visibility="visible"-->
+    <!--ELSE              android:visibility="gone"-->
+    <FrameLayout
+        android:id="@+id/popup_container_fixpage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="48dp"
+        android:background="#F2FFFFFF"
+        android:visibility="gone">
+
+        <!--container of popup-->
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

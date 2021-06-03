@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventchild"
+    android:layout_width="420dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/fragment_bg_blacktrans"
+    android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/event_cardview_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:background="#ffffff"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="8dp">
+
+            <LinearLayout
+                android:id="@+id/event_linearlayout_eventchild"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+                <ImageView
+                    android:id="@+id/poster_eventchild"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="70"
+                    android:background="#00000000"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="#968EA5" />
+
+                <Space
+                    android:id="@+id/space_poster_title_eventchild"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2" />
+
+                <!--android:text="('Event Title')"-->
+                <TextView
+                    android:id="@+id/title_text_eventchild"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="11"
+                    android:autoSizeTextType="uniform"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/db_helvethaicamon_x"
+                    android:gravity="start"
+                    android:text="Event Title"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#444149"
+                    android:textStyle="bold" />
+
+                <!--android:text="('Start Date' - 'End Date')"-->
+                <TextView
+                    android:id="@+id/timeperiod_text_eventchild"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:autoSizeTextType="uniform"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="start"
+                    android:text="Fri 05 Mar 2021 - Sun 14 Mar 2021"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#7C65A4"
+                    android:textStyle="bold" />
+
+                <!--android:text="('Zone' Floor 'Floor')"-->
+                <TextView
+                    android:id="@+id/location_text_eventchild"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:autoSizeTextType="uniform"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="start"
+                    android:text="Robinson Floor L1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#7C65A4"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    <!--*** EVENTCHILD EDIT SORT CONTAINER (Visible) ***-->
+    <!--click lauguage button   android:visibility="visible"-->
+    <!--ELSE              android:visibility="gone"-->
+    <LinearLayout
+        android:id="@+id/editsort_container_eventchild"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:background="@drawable/fragment_bg_white_stroke_blacktrans"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="25dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.65"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:id="@+id/change_image_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Change Image"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edit_title_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Edit Title"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edit_time_period_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Edit Time Period"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edit_location_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Edit Location"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edit_content_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Edit Content"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/delete_event_text_editsort_eventchild"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="left"
+            android:text="Delete Event"
+            android:textColor="#F9636B"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!--*** EVENTCHILD EDIT ICON (Visible) ***-->
+    <!--settings menupage  android:visibility="visible"-->
+    <!--ELSE               android:visibility="gone"-->
+    <ImageButton
+        android:id="@+id/promotion_pencil_icon_menupage"
+        android:visibility="gone"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="#00000000"
+        android:elevation="12dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fragment_tripledot_icon_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

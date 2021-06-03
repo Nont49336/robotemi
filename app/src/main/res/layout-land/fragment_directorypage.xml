@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/directorypage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/search_location_edittext_directorypage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/fragment_bg_white_stroke_blacktrans"
+            android:elevation="32dp"
+            android:ems="10"
+            android:fontFamily="@font/db_helvethaicamon_x"
+            android:gravity="start"
+            android:hint="Search..."
+            android:inputType="textLongMessage"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03"
+            app:layout_constraintWidth_percent="0.75"
+            card_view:layout_constraintHorizontal_bias="0.8" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/location_constraint_directorypage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/fragment_bg_blacktrans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.85"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintWidth_percent="0.9"
+            card_view:layout_constraintHorizontal_bias="0.48">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/location_cardview_directorypage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:background="#ffffff"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="8dp">
+
+                <LinearLayout
+                    android:id="@+id/location_guildmap_shop_linear_directorypage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <FrameLayout
+                        android:id="@+id/guildmap_container_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="65"
+                        android:background="#968EA5"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:scaleType="centerCrop">
+
+                        <!--container of guildmap-->
+                    </FrameLayout>
+
+                    <Space
+                        android:id="@+id/space_guildmap_shop_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2" />
+
+                    <!--android:text="('Shop Name')"-->
+                    <TextView
+                        android:id="@+id/shopname_text_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="11"
+                        android:autoSizeTextType="uniform"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/db_helvethaicamon_x"
+                        android:gravity="start"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="Shop Name"
+                        android:textColor="#444149"
+                        android:textStyle="bold" />
+
+                    <!--android:text="(Floor :  'Floor')"-->
+                    <TextView
+                        android:id="@+id/floor_text_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="6"
+                        android:autoSizeTextType="uniform"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="Floor :   L1"
+                        android:textColor="#7C65A4"
+                        android:textStyle="bold" />
+
+                    <!--android:text="(Zone :   'Zone')"-->
+                    <TextView
+                        android:id="@+id/zone_text_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="6"
+                        android:autoSizeTextType="uniform"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="Zone :   Main Atrium"
+                        android:textColor="#7C65A4"
+                        android:textStyle="bold" />
+
+                    <!--android:text="('Shop Phone Number')"-->
+                    <TextView
+                        android:id="@+id/phone_number_text_directorypage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5"
+                        android:autoSizeTextType="uniform"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="start"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="0-2721-9302, 0-2721-9406 "
+                        android:textColor="#808080"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

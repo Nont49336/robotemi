@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menupage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+
+    <HorizontalScrollView
+        android:id="@+id/pagelist_scrollview_menupage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fadeScrollbars="true"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/call_background_tab_menupage"
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <GridLayout
+            android:id="@+id/pagelist_gridlayout_menupage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:alignmentMode="alignMargins"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp"
+            android:paddingRight="140dp"
+            android:paddingBottom="20dp"
+            android:rowCount="3">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/thaichana_cardview_menupage"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_margin="15dp"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/thaichana_linearlayout_menupage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/fragment_bg_button_orangered"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <ImageButton
+                        android:id="@+id/thaichana_button_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:background="#00000000"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fragment_thaichana_icon_button" />
+
+                    <TextView
+                        android:id="@+id/thaichana_text_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="15"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:text="Thai Chana"
+                        android:textColor="#131a24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--*** THAICHANA EDIT ICON (Visible) ***-->
+            <!--settings menupage  android:visibility="visible"-->
+            <!--ELSE               android:visibility="gone"-->
+            <ImageButton
+                android:id="@+id/thaichana_pencil_icon_menupage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:background="#00000000"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fragment_pencil_icon_button"
+                android:visibility="gone" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/event_cardview_menupage"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_margin="15dp"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/event_linearlayout_menupage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/fragment_bg_button_redpurple"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <ImageButton
+                        android:id="@+id/event_button_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:background="#00000000"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fragment_event_icon_button" />
+
+                    <TextView
+                        android:id="@+id/event_text_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="15"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:text="Event"
+                        android:textColor="#131a24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--*** EVENT EDIT ICON (Visible) ***-->
+            <!--settings menupage  android:visibility="visible"-->
+            <!--ELSE               android:visibility="gone"-->
+            <ImageButton
+                android:id="@+id/event_pencil_icon_menupage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:background="#00000000"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fragment_pencil_icon_button"
+                android:visibility="gone" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/directory_cardview_menupage"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_margin="15dp"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/directory_linearlayout_menupage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/fragment_bg_button_mintblue"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <ImageButton
+                        android:id="@+id/directory_button_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:background="#00000000"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fragment_directory_icon_button" />
+
+                    <TextView
+                        android:id="@+id/directory_text_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="15"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:text="Directory"
+                        android:textColor="#131a24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--*** DIRECTORY EDIT ICON (Visible) ***-->
+            <!--settings menupage  android:visibility="visible"-->
+            <!--ELSE               android:visibility="gone"-->
+            <ImageButton
+                android:id="@+id/directory_pencil_icon_menupage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="right"
+                android:background="#00000000"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fragment_pencil_icon_button"
+                android:visibility="gone" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rated_us_cardview_menupage"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_margin="15dp"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/rated_us_linearlayout_menupage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/fragment_bg_button_greybrown"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <ImageButton
+                        android:id="@+id/rated_us_button_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:background="#00000000"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fragment_ratedus_icon_button" />
+
+                    <TextView
+                        android:id="@+id/rated_us_text_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="15"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:text="Rated Us"
+                        android:textColor="#131a24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--*** RATED US EDIT ICON (Visible) ***-->
+            <!--settings menupage  android:visibility="visible"-->
+            <!--ELSE               android:visibility="gone"-->
+            <ImageButton
+                android:id="@+id/rated_us_pencil_icon_menupage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_gravity="right"
+                android:background="#00000000"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fragment_pencil_icon_button"
+                android:visibility="gone" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/promotion_cardview_menupage"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:layout_margin="15dp"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/promotion_linearlayout_menupage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/fragment_bg_button_orangered"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <ImageButton
+                        android:id="@+id/promotion_button_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:background="#00000000"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fragment_promotion_icon_button" />
+
+                    <TextView
+                        android:id="@+id/promotion_text_menupage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="15"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:text="Promotion"
+                        android:textColor="#131a24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--*** PROMOTION EDIT ICON (Visible) ***-->
+            <!--settings menupage  android:visibility="visible"-->
+            <!--ELSE               android:visibility="gone"-->
+            <ImageButton
+                android:id="@+id/promotion_pencil_icon_menupage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_gravity="right"
+                android:background="#00000000"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fragment_pencil_icon_button"
+                android:visibility="gone" />
+
+        </GridLayout>
+    </HorizontalScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
