@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements
         call_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                robot.startTelepresence(emer.getName(),emer.getUserId());
+                robot.getAllContact();
+                robot.startTelepresence(robot.getAdminInfo().getName(),robot.getAdminInfo().getUserId());
             }
         });
 //        robot.startTelepresence(emer.getName(),emer.getUserId());
@@ -202,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements
             try {
                 final ActivityInfo activityInfo = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
                 robot.onStart(activityInfo);
-                emer = robot.getAdminInfo();
+//                emer = robot.getAdminInfo();
             } catch (PackageManager.NameNotFoundException e) {
                 throw new RuntimeException(e);
             }
