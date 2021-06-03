@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements
 {
     FrameLayout main_container;
     Robot robot;
-    UserInfo emer;
-    private Button call_btn;
+
+//    private Button call_btn;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     public static String PACKAGE_NAME;
     private static final String[] PERMISSIONS_STORAGE =
@@ -81,15 +81,15 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         main_container = findViewById(R.id.main_layout);
-        call_btn = findViewById(R.id.call_btn);
-        call_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                robot.getAllContact();
-                robot.startTelepresence(robot.getAdminInfo().getName(),robot.getAdminInfo().getUserId());
-            }
-        });
-//        robot.startTelepresence(emer.getName(),emer.getUserId());
+
+//        call_btn = findViewById(R.id.call_btn);
+//        call_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                robot.getAllContact();
+//                robot.startTelepresence(robot.getAdminInfo().getName(),robot.getAdminInfo().getUserId());
+//            }
+//        });
 
 
 //        changelayout(fragment_temiface.newInstance());
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements
 
             Toast.makeText(getApplicationContext(), "Internet Is Not Connected", Toast.LENGTH_SHORT).show();
         }
-//          changeMain_Menu();
+          changeMain_Menu();
     }
 
     public void change_temiface()
@@ -207,7 +207,6 @@ public class MainActivity extends AppCompatActivity implements
             try {
                 final ActivityInfo activityInfo = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
                 robot.onStart(activityInfo);
-//                emer = robot.getAdminInfo();
             } catch (PackageManager.NameNotFoundException e) {
                 throw new RuntimeException(e);
             }

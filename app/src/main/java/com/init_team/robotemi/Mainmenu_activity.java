@@ -34,6 +34,7 @@ public class Mainmenu_activity extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
+        robot = robot.getInstance();
 
     }
 
@@ -58,14 +59,8 @@ public class Mainmenu_activity extends AppCompatActivity {
                 return false;
             }
         });
-//            cs_call_img_btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    emer = robot.getAdminInfo();
-//                    robot.startTelepresence(emer.getName(),emer.getUserId());
-//                }
-//            });
-//            emer_call_img_btn.setOnClickListener(new View.OnClickListener() {
+
+        //            emer_call_img_btn.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
 //                    robot.startTelepresence(emer.getName(),emer.getUserId());
