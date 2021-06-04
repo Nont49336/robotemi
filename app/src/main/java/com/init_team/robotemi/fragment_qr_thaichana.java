@@ -33,7 +33,7 @@ public class fragment_qr_thaichana extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-
+        ((Mainmenu_activity)getActivity()).make_home_visible();
     }
 
 }

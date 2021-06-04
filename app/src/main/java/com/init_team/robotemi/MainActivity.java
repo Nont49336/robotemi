@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements
 
             Toast.makeText(getApplicationContext(), "Internet Is Not Connected", Toast.LENGTH_SHORT).show();
         }
-          changeMain_Menu();
+          change_temiface();
     }
 
     public void change_temiface()

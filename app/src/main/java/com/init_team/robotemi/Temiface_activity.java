@@ -59,11 +59,24 @@ public class Temiface_activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int rawId = getResources().getIdentifier("poomjaibot_eye_face",  "raw", getPackageName());
-      //  Uri vid_uri = Uri.parse("android.resources://"+getPackageName()+"/"+rawId);
+        String vid_uri = "android.resources://"+getPackageName()+"/"+rawId;
         super.onCreate(savedInstanceState);
         temiface = findViewById(R.id.eye_video_facepoomjaibotpage);
         setContentView(R.layout.fragment_facepoomjaibotpage); // poomjai_bot face as 1 activity for vid switching and sound switching.;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        temiface.setVideoPath(vid_uri);
+        temiface.requestFocus();
+        temiface.start();
+        temiface.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    change_to_mainmenu();
+                }
+                return false;
+            }
+        });
       //  vid_player.setAnchorView(temiface);
       //  temiface.setMediaController(vid_player);
       //  temiface.setVideoURI(vid_uri);
@@ -117,8 +130,12 @@ public class Temiface_activity extends AppCompatActivity
         }
         return null;
     }
-
-
+    public void change_to_mainmenu()
+    {
+        Intent intent = new Intent(Temiface_activity.this,Mainmenu_activity.class);
+        startActivity(intent);
+        finish();
+    }
      // place app on the top bar for quick access shortcut
     public void onRobotReady(boolean isReady) {
         if (isReady) {

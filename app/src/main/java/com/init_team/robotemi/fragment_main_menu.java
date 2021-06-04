@@ -50,25 +50,26 @@ public class fragment_main_menu extends Fragment {
         promotion_btn = getView().findViewById(R.id.promotion_cardview_menupage);
         event_btn = getView().findViewById(R.id.event_cardview_menupage);
         rated_us_btn = getView().findViewById(R.id.rated_us_cardview_menupage);
-//        thai_chana_btn.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//            if(event.getAction() == MotionEvent.ACTION_UP)
-//            {
-//                ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_qr_thaichana.newInstance());
-//                Log.e("TAG", "It is touched down");
-//
-//            }
-//                return false;
-//            }
-//        });
-        thai_chana_btn.setOnClickListener(new View.OnClickListener() {
+        ((Mainmenu_activity)getActivity()).make_setting_visible();
+        thai_chana_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+            if(event.getAction() == MotionEvent.ACTION_DOWN)
+            {
                 ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_qr_thaichana.newInstance());
                 Log.e("TAG", "It is touched down");
+
+            }
+                return false;
             }
         });
+//        thai_chana_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_qr_thaichana.newInstance());
+//                Log.e("TAG", "It is touched down");
+//            }
+//        });
         directory_btn.setOnTouchListener(new View.OnTouchListener() {
 
             @Override

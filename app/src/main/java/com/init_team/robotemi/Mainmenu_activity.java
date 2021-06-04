@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
 import com.robotemi.sdk.Robot;
@@ -30,20 +31,23 @@ public class Mainmenu_activity extends AppCompatActivity {
     private UserInfo cs;
     private UserInfo emer;
     Robot robot;
+    private ImageButton setting_btn;
+    private ImageButton home_btn;
+
 
 
     public void onStart() {
         super.onStart();
         robot = robot.getInstance();
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle savedInstanceStated) {
-//        Robot robot = new Robot(getApplicationContext());
         super.onCreate(savedInstanceStated);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.fragment_fixpage);
+        setting_btn = findViewById(R.id.setting_button_fixpage);
+        home_btn = findViewById(R.id.home_button_fixpage);
         cs_call_img_btn = findViewById(R.id.customer_service_button_fixpage);
         emer_call_img_btn = findViewById(R.id.emergency_call_button_fixpage);
         change_menu_page_container(fragment_main_menu.newInstance());
@@ -60,12 +64,6 @@ public class Mainmenu_activity extends AppCompatActivity {
             }
         });
 
-        //            emer_call_img_btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    robot.startTelepresence(emer.getName(),emer.getUserId());
-//                }
-//            });
         emer_call_img_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -86,7 +84,18 @@ public class Mainmenu_activity extends AppCompatActivity {
                 change_to_temiface();
             }
         };
-        startHandler();
+
+        home_btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    change_menu_page_container(fragment_main_menu.newInstance());
+                }
+                return false;
+            }
+        });
+
     }
 
     public void onUserInteraction() {
@@ -115,14 +124,17 @@ public class Mainmenu_activity extends AppCompatActivity {
                 .replace(R.id.page_container_fixpage, fragment)
                 .commit();
     }
-
-    public void setting_and_home_btn_visibility()
+    public void make_setting_visible()
     {
-        if(getSupportFragmentManager().findFragmentById(R.id.page_container_fixpage) instanceof fragment_main_menu)
-        {
-//            Log.i("TAG", )
-        }
+     setting_btn.setVisibility(View.VISIBLE);
+     home_btn.setVisibility(View.INVISIBLE);
     }
+    public void make_home_visible()
+    {
+        setting_btn.setVisibility(View.INVISIBLE);
+        home_btn.setVisibility(View.VISIBLE);
+    }
+//    }
 
 //    @Override
 //    public void onRobotReady(boolean isReady) {
