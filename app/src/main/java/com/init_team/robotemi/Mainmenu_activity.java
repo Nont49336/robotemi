@@ -33,6 +33,8 @@ public class Mainmenu_activity extends AppCompatActivity {
     Robot robot;
     private ImageButton setting_btn;
     private ImageButton home_btn;
+    private List<UserInfo> all_contact;
+
 
 
 
