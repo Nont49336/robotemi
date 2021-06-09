@@ -45,9 +45,9 @@ public class fragment_main_menu extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-
+        View view = inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
         mRecyclerView = getView().findViewById(R.id.pagelist_recyclerview_menupage);
-        return inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
+        return view;
     }
     @SuppressLint("ClickableViewAccessibility")
     public void onActivityCreated(Bundle savedInstanceState)
