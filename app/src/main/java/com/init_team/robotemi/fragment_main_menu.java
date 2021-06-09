@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class fragment_main_menu extends Fragment {
@@ -35,25 +36,26 @@ public class fragment_main_menu extends Fragment {
     }
     private RecyclerView mRecyclerView;
     RecyclerAdapter menu_adapter;
-    private List<menu_item> menu_item_lst;
-    
+    private List<menu_item> menu_item_lst = new ArrayList<>();
+    menu_item menu_item_data = new menu_item();
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
+
+        mRecyclerView = getView().findViewById(R.id.pagelist_recyclerview_menupage);
         return inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
     }
     @SuppressLint("ClickableViewAccessibility")
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        menu_item_lst.add(new menu_item("Thai Chana",R.drawable.fragment_thaichana_icon_button));
-        menu_item_lst.add(new menu_item("Directory",R.drawable.fragment_directory_icon_button));
-        menu_item_lst.add(new menu_item("Promotion",R.drawable.fragment_event_icon_button));
-        menu_item_lst.add(new menu_item("Event",R.drawable.fragment_event_icon_button));
-        menu_item_lst.add(new menu_item("Rated Us",R.drawable.fragment_ratedus_icon_button));
-        mRecyclerView = getView().findViewById(R.id.pagelist_recyclerview_menupage);
+        menu_item_data.add("Thai Chana",R.drawable.fragment_thaichana_icon_button);
+        menu_item_lst.add(menu_item_data);
+        Log.e("test",menu_item_lst.toString());
         RecyclerAdapter menu_adapter = new RecyclerAdapter(this,menu_item_lst);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),3));
         mRecyclerView.setAdapter(menu_adapter);

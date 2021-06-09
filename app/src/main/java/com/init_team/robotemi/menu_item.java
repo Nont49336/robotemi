@@ -12,6 +12,11 @@ public class menu_item {
         Menu_title = menu_title;
         Menu_pic_id = menu_picture_id;
     }
+    public void add(String menu_title, int menu_pic_id)
+    {
+        Menu_title = menu_title;
+        Menu_pic_id = menu_pic_id;
+    }
 
     public String getMenu_title() {
         return Menu_title;
