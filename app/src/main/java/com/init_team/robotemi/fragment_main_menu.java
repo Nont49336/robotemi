@@ -46,7 +46,7 @@ public class fragment_main_menu extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
-        mRecyclerView = getView().findViewById(R.id.pagelist_recyclerview_menupage);
+        mRecyclerView = view.findViewById(R.id.pagelist_recyclerview_menupage);
         return view;
     }
     @SuppressLint("ClickableViewAccessibility")
@@ -54,6 +54,14 @@ public class fragment_main_menu extends Fragment {
     {
         super.onActivityCreated(savedInstanceState);
         menu_item_data.add("Thai Chana",R.drawable.fragment_thaichana_icon_button);
+        menu_item_lst.add(menu_item_data);
+        menu_item_data.add("Directory",R.drawable.fragment_directory_icon_button);
+        menu_item_lst.add(menu_item_data);
+        menu_item_data.add("Event",R.drawable.fragment_event_icon_button);
+        menu_item_lst.add(menu_item_data);
+        menu_item_data.add("Promotion",R.drawable.fragment_promotion_icon_button);
+        menu_item_lst.add(menu_item_data);
+        menu_item_data.add("rated us",R.drawable.fragment_ratedus_icon_button);
         menu_item_lst.add(menu_item_data);
         Log.e("test",menu_item_lst.toString());
         RecyclerAdapter menu_adapter = new RecyclerAdapter(this,menu_item_lst);
