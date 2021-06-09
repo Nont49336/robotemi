@@ -1,6 +1,7 @@
 package com.init_team.robotemi;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -19,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.robotemi.sdk.Robot;
 import com.robotemi.sdk.UserInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mainmenu_activity extends AppCompatActivity {
@@ -34,7 +37,7 @@ public class Mainmenu_activity extends AppCompatActivity {
     private ImageButton setting_btn;
     private ImageButton home_btn;
     private List<UserInfo> all_contact;
-
+    public List<menu_item> menu_item_lst;
 
 
 
@@ -48,6 +51,11 @@ public class Mainmenu_activity extends AppCompatActivity {
         super.onCreate(savedInstanceStated);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.fragment_fixpage);
+//        menu_item_lst.add(new menu_item("Thai Chana",R.drawable.fragment_thaichana_icon_button));
+//        menu_item_lst.add(new menu_item("Directory",R.drawable.fragment_directory_icon_button));
+//        menu_item_lst.add(new menu_item("Promotion",R.drawable.fragment_event_icon_button));
+//        menu_item_lst.add(new menu_item("Event",R.drawable.fragment_event_icon_button));
+//        menu_item_lst.add(new menu_item("Rated Us",R.drawable.fragment_ratedus_icon_button));
         setting_btn = findViewById(R.id.setting_button_fixpage);
         home_btn = findViewById(R.id.home_button_fixpage);
         cs_call_img_btn = findViewById(R.id.customer_service_button_fixpage);
@@ -58,8 +66,8 @@ public class Mainmenu_activity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    UserInfo emer = robot.getAdminInfo();
-                    robot.startTelepresence(emer.getName(), emer.getUserId());
+                    cs = robot.getAdminInfo();
+                    robot.startTelepresence(cs.getName(), cs.getUserId());
                     return true;
                 }
                 return false;
@@ -71,10 +79,10 @@ public class Mainmenu_activity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    emer = robot.getAdminInfo();
-                    robot.startTelepresence(emer.getName(), emer.getUserId());
+                    all_contact = robot.getAllContact();
+                    Log.e("Username:",all_contact.toString());
+                    robot.startTelepresence("Namwhan", "40a79d993531f4e830e5ec57c0a4b7c0");
                     return true;
-
                 }
                 return false;
             }
@@ -104,7 +112,6 @@ public class Mainmenu_activity extends AppCompatActivity {
         super.onUserInteraction();
         stopHandler();
         startHandler();
-
     }
 
     public void stopHandler() {
@@ -112,7 +119,7 @@ public class Mainmenu_activity extends AppCompatActivity {
     }
 
     public void startHandler() {
-        handler.postDelayed(r, 1000 * 1000);
+        handler.postDelayed(r, 30 * 1000);
     }
 
     private void change_to_temiface() {
@@ -136,6 +143,7 @@ public class Mainmenu_activity extends AppCompatActivity {
         setting_btn.setVisibility(View.INVISIBLE);
         home_btn.setVisibility(View.VISIBLE);
     }
+
 //    }
 
 //    @Override

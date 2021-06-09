@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -16,8 +17,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class fragment_main_menu extends Fragment {
     static fragment_main_menu fragment;
@@ -28,69 +33,31 @@ public class fragment_main_menu extends Fragment {
         }
         return fragment;
     }
-
-    private CardView thai_chana_btn;
-    private CardView directory_btn;
-    private CardView promotion_btn;
-    private CardView event_btn;
-    private CardView rated_us_btn;
+    private RecyclerView mRecyclerView;
+    RecyclerAdapter menu_adapter;
+    private List<menu_item> menu_item_lst;
+    View gridview;
+    
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_menupage,container,false);
+        return inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
     }
     @SuppressLint("ClickableViewAccessibility")
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        thai_chana_btn = getView().findViewById(R.id.thaichana_cardview_menupage);
-        directory_btn = getView().findViewById(R.id.directory_cardview_menupage);
-        promotion_btn = getView().findViewById(R.id.promotion_cardview_menupage);
-        event_btn = getView().findViewById(R.id.event_cardview_menupage);
-        rated_us_btn = getView().findViewById(R.id.rated_us_cardview_menupage);
-        ((Mainmenu_activity)getActivity()).make_setting_visible();
-        thai_chana_btn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-            if(event.getAction() == MotionEvent.ACTION_DOWN)
-            {
-                ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_qr_thaichana.newInstance());
-                Log.e("TAG", "It is touched down");
+        menu_item_lst.add(new menu_item("Thai Chana",R.drawable.fragment_thaichana_icon_button));
+        menu_item_lst.add(new menu_item("Directory",R.drawable.fragment_directory_icon_button));
+        menu_item_lst.add(new menu_item("Promotion",R.drawable.fragment_event_icon_button));
+        menu_item_lst.add(new menu_item("Event",R.drawable.fragment_event_icon_button));
+        menu_item_lst.add(new menu_item("Rated Us",R.drawable.fragment_ratedus_icon_button));
+        mRecyclerView = getView().findViewById(R.id.pagelist_recyclerview_menupage);
+        RecyclerAdapter menu_adapter = new RecyclerAdapter(this,menu_item_lst);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),3));
+        mRecyclerView.setAdapter(menu_adapter);
 
-            }
-                return false;
-            }
-        });
-//        thai_chana_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_qr_thaichana.newInstance());
-//                Log.e("TAG", "It is touched down");
-//            }
-//        });
-        directory_btn.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP)
-                {
-//                    ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_event);
-//                    return true;
-                }
-                return false;
-            }
-        });
-        rated_us_btn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN)
-                {
-                    ((Mainmenu_activity) getActivity()).change_menu_page_container(fragment_rateduspage.newInstance());
-                }
-                return false;
-            }
-        });
     }
 }

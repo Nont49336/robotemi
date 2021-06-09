@@ -11,7 +11,8 @@
     android:layout_margin="15dp"
     card_view:cardCornerRadius="20dp"
     card_view:cardElevation="4dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
 
     <!-- No rowWeight  android:layout_height="345dp" -->
 
@@ -23,6 +24,20 @@
             android:orientation="vertical"
             android:weightSum="100">
 
+            <TextView
+                android:id="@+id/button_text_menupage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="15"
+                android:autoSizeTextType="uniform"
+                android:background="#00ffffff"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:textColor="#131a24"
+                android:textStyle="bold" />
+
             <ImageButton
                 android:id="@+id/button_icon_menupage"
                 android:layout_width="match_parent"
@@ -32,18 +47,5 @@
                 android:gravity="center"
                 android:scaleType="fitCenter" />
 
-            <TextView
-                android:id="@+id/button_text_menupage"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="#00ffffff"
-                android:layout_weight="15"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/nunito_bold"
-                android:gravity="center"
-                android:textColor="#131a24"
-                android:textStyle="bold" />
         </LinearLayout>
 </androidx.cardview.widget.CardView>

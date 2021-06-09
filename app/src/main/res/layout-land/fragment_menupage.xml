@@ -78,6 +78,7 @@
                         android:gravity="center"
                         android:text="Thai Chana"
                         android:textColor="#131a24"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -142,6 +143,7 @@
                         android:gravity="center"
                         android:text="Event"
                         android:textColor="#131a24"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -206,6 +208,7 @@
                         android:gravity="center"
                         android:text="Directory"
                         android:textColor="#131a24"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -270,6 +273,7 @@
                         android:gravity="center"
                         android:text="Rated Us"
                         android:textColor="#131a24"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -334,6 +338,7 @@
                         android:gravity="center"
                         android:text="Promotion"
                         android:textColor="#131a24"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menupage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+        <!--*** MENU BUTTON CARDVIEW CONTAINER ***-->
+        <GridLayout
+            android:id="@+id/pagelist_gridlayout_menupage"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="#00ffffff"
+            android:alignmentMode="alignMargins"
+            android:paddingStart="30dp"
+            android:paddingEnd="100dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:columnCount="3"
+            android:rowCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <!--container of 'button_cardview_menupage' -->
+
+        </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
