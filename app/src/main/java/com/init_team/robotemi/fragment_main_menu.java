@@ -36,7 +36,6 @@ public class fragment_main_menu extends Fragment {
     private RecyclerView mRecyclerView;
     RecyclerAdapter menu_adapter;
     private List<menu_item> menu_item_lst;
-    View gridview;
     
 
     @Nullable
