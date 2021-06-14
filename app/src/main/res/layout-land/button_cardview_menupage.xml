@@ -5,8 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/button_cardview_menupage"
-    android:layout_width="265dp"
-    android:layout_height="0dp"
+    android:focusable = "true"
+    android:layout_width="280dp"
+    android:layout_height="270dp"
     android:layout_rowWeight="1"
     android:layout_margin="15dp"
     card_view:cardCornerRadius="20dp"
@@ -24,6 +25,15 @@
             android:orientation="vertical"
             android:weightSum="100">
 
+            <ImageView
+                android:id="@+id/button_icon_menupage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:background="#00ffffff"
+                android:gravity="center"
+                android:scaleType="fitCenter" />
+
             <TextView
                 android:id="@+id/button_text_menupage"
                 android:layout_width="match_parent"
@@ -36,16 +46,8 @@
                 android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
                 android:textColor="#131a24"
+                android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/button_icon_menupage"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="80"
-                android:background="#00ffffff"
-                android:gravity="center"
-                android:scaleType="fitCenter" />
 
         </LinearLayout>
 </androidx.cardview.widget.CardView>

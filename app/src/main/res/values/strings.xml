@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">robotemi</string>
+    <string name="app_name">PoomjaiBot\n</string>
+    <string name="qr_code_to_check_in" translatable="true">QR code to check-in.</string>
+    <string name="scan" translatable="true">SCAN</string>
+    <string name="customer_service">Customer Service</string>
+    <string name="ask_any_question_contact_customer_service">ask any question? contact customer service</string>
+    <string name="emergency_call">Emergency Call</string>
+    <string name="please_contact_us_in_case_of_emergency">Please, Contact us in case of emergency.</string>
+    <string name="how_was_you_experience">How was you experience?</string>
+    <string name="write_your_review">Write your review...</string>
+    <string name="submit">Submit</string>
+    <string name="qr_thai_chana">Thai Chana</string>
+    <string name="Directory">Directory</string>
+    <string name="Promotion">Promotion</string>
+    <string name="Event">Event</string>
+    <string name="Rated_Us">Rated Us</string>
+    <string name="eng">ENG</string>
 </resources>

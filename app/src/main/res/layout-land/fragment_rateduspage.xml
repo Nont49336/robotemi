@@ -5,7 +5,8 @@
     android:id="@+id/rateduspage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    tools:ignore="MissingDefaultResource">
 
         <ImageView
             android:id="@+id/ratedus_box_rateduspage"
@@ -43,7 +44,8 @@
             android:layout_height="0dp"
             android:elevation="24dp"
             android:fontFamily="@font/db_helvethaicamon_x"
-            android:text="How was you experience?"
+            android:text="@string/how_was_you_experience"
+            android:textSize="40sp"
             android:textColor="#FFFFFF"
             android:autoSizeTextType="uniform"
             android:textStyle="bold"
@@ -65,11 +67,11 @@
             android:ems="10"
             android:fontFamily="@font/db_helvethaicamon_x"
             android:gravity="start"
-            android:hint="Write your review..."
+            android:hint="@string/write_your_review"
             android:inputType="textLongMessage"
             android:padding="20dp"
             android:textColor="#000000"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@+id/submit_button_rateduspage"
             app:layout_constraintEnd_toEndOf="@+id/ratedus_box_rateduspage"
@@ -103,7 +105,8 @@
             android:layout_height="0dp"
             android:elevation="28dp"
             android:fontFamily="@font/db_helvethaicamon_x"
-            android:text="Submit"
+            android:text="@string/submit"
+            android:textSize="32sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:gravity="center"

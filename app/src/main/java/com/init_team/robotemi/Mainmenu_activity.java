@@ -1,66 +1,108 @@
 package com.init_team.robotemi;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
 import com.robotemi.sdk.Robot;
 import com.robotemi.sdk.UserInfo;
+import com.robotemi.sdk.listeners.OnTelepresenceEventChangedListener;
+import com.robotemi.sdk.listeners.OnTelepresenceStatusChangedListener;
+import com.robotemi.sdk.listeners.OnUserInteractionChangedListener;
+import com.robotemi.sdk.model.CallEventModel;
+import com.robotemi.sdk.telepresence.CallState;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class Mainmenu_activity extends AppCompatActivity {
+public class Mainmenu_activity extends AppCompatActivity implements
+        OnTelepresenceEventChangedListener {
+
     Handler handler;
     Runnable r;
-
     private ImageView cs_call_img_btn;
     private ImageView emer_call_img_btn;
-    private List Contact_Info;
     private UserInfo cs;
-    private UserInfo emer;
     Robot robot;
     private ImageButton setting_btn;
     private ImageButton home_btn;
     private List<UserInfo> all_contact;
-    public List<menu_item> menu_item_lst;
-
+    private CardView change_lang;
 
 
     public void onStart() {
         super.onStart();
         robot = robot.getInstance();
-    }
+        robot.hideTopBar();
+        robot.addOnTelepresenceEventChangedListener(this);
 
+    }
     @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle savedInstanceStated) {
         super.onCreate(savedInstanceStated);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        loadLocale();
         setContentView(R.layout.fragment_fixpage);
-//        menu_item_lst.add(new menu_item("Thai Chana",R.drawable.fragment_thaichana_icon_button));
-//        menu_item_lst.add(new menu_item("Directory",R.drawable.fragment_directory_icon_button));
-//        menu_item_lst.add(new menu_item("Promotion",R.drawable.fragment_event_icon_button));
-//        menu_item_lst.add(new menu_item("Event",R.drawable.fragment_event_icon_button));
-//        menu_item_lst.add(new menu_item("Rated Us",R.drawable.fragment_ratedus_icon_button));
+        WindowManager manager = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+        localLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        localLayoutParams.gravity = Gravity.TOP;
+        localLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
+// this is to enable the notification to recieve touch events
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+// Draws over status bar
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        localLayoutParams.width = localLayoutParams.MATCH_PARENT;
+        localLayoutParams.height = (int) (55 * getResources().getDisplayMetrics().scaledDensity);
+        localLayoutParams.format = PixelFormat.TRANSPARENT;
+        customViewGroup view = new customViewGroup(this);
+        manager.addView(view, localLayoutParams);
+
+        change_lang = findViewById(R.id.language_cardview_fixpage);
         setting_btn = findViewById(R.id.setting_button_fixpage);
         home_btn = findViewById(R.id.home_button_fixpage);
         cs_call_img_btn = findViewById(R.id.customer_service_button_fixpage);
         emer_call_img_btn = findViewById(R.id.emergency_call_button_fixpage);
         change_menu_page_container(fragment_main_menu.newInstance());
+        change_lang.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    showChangeLanguageDialog();
+                    return true;
+                }
+                return false;
+            }
+        });
         cs_call_img_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -79,8 +121,8 @@ public class Mainmenu_activity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    all_contact = robot.getAllContact();
-                    Log.e("Username:",all_contact.toString());
+//                    all_contact = robot.getAllContact();
+//                    Log.e("Username:", all_contact.toString());
                     robot.startTelepresence("Namwhan", "40a79d993531f4e830e5ec57c0a4b7c0");
                     return true;
                 }
@@ -91,6 +133,7 @@ public class Mainmenu_activity extends AppCompatActivity {
         r = new Runnable() {
             @Override
             public void run() {
+
                 change_to_temiface();
             }
         };
@@ -98,28 +141,41 @@ public class Mainmenu_activity extends AppCompatActivity {
         home_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN)
-                {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     change_menu_page_container(fragment_main_menu.newInstance());
                 }
                 return false;
             }
         });
+        setting_btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    finishAffinity();
+                    System.exit(0);
+                }
+                return false;
+            }
+        });
+
 
     }
+
 
     public void onUserInteraction() {
         super.onUserInteraction();
         stopHandler();
         startHandler();
+
     }
+
 
     public void stopHandler() {
         handler.removeCallbacks(r);
     }
 
     public void startHandler() {
-        handler.postDelayed(r, 30 * 1000);
+        handler.postDelayed(r, 20 * 1000);
     }
 
     private void change_to_temiface() {
@@ -133,18 +189,70 @@ public class Mainmenu_activity extends AppCompatActivity {
                 .replace(R.id.page_container_fixpage, fragment)
                 .commit();
     }
-    public void make_setting_visible()
-    {
-     setting_btn.setVisibility(View.VISIBLE);
-     home_btn.setVisibility(View.INVISIBLE);
+
+    public void make_setting_visible() {
+        setting_btn.setVisibility(View.VISIBLE);
+        home_btn.setVisibility(View.INVISIBLE);
     }
-    public void make_home_visible()
-    {
+
+    public void make_home_visible() {
         setting_btn.setVisibility(View.INVISIBLE);
         home_btn.setVisibility(View.VISIBLE);
     }
 
-//    }
+    public void onStop() {
+        super.onStop();
+        robot.removeOnTelepresenceEventChangedListener(this);
+    }
+
+    @Override
+    public void onTelepresenceEventChanged(@NotNull CallEventModel callEventModel) {
+        if (callEventModel.getState() == 0) {
+            stopHandler();
+        }
+        if (callEventModel.getState() == 1) {
+            startHandler();
+        }
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] lang_list = {"Eng", "ไทย"};
+        AlertDialog.Builder lang_builder = new AlertDialog.Builder(Mainmenu_activity.this);
+        lang_builder.setTitle("Choose language...");
+        lang_builder.setSingleChoiceItems(lang_list, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    setLocale("En");
+                    recreate();
+                } else if (i == 1) {
+                    setLocale("th");
+                    recreate();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog lang_dialog = lang_builder.create();
+        lang_dialog.show();
+
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_lang", lang);
+        editor.apply();
+    }
+
+    private void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_lang", "");
+        setLocale(language);
+    }
 
 //    @Override
 //    public void onRobotReady(boolean isReady) {
@@ -157,4 +265,5 @@ public class Mainmenu_activity extends AppCompatActivity {
 //            }
 //        }
 //    }
-    }
+
+}

@@ -6,10 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.PixelFormat;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -35,6 +40,10 @@ import com.robotemi.sdk.listeners.OnRobotReadyListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 //should have preloader for faster application
@@ -55,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements
     FrameLayout main_container;
     Robot robot;
 
+
 //    private Button call_btn;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     public static String PACKAGE_NAME;
@@ -66,31 +76,56 @@ public class MainActivity extends AppCompatActivity implements
     };
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
+
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
         }
+       Log.e("Storage Permission","permission granted");
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 //        Robot robot = new Robot(getApplicationContext());
+        verifyStoragePermissions(this);
         PACKAGE_NAME = getApplicationContext().getPackageName();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        WindowManager manager = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+        localLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        localLayoutParams.gravity = Gravity.TOP;
+        localLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
+// this is to enable the notification to recieve touch events
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+// Draws over status bar
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        localLayoutParams.width = localLayoutParams.MATCH_PARENT;
+        localLayoutParams.height = (int) (55 * getResources().getDisplayMetrics().scaledDensity);
+        localLayoutParams.format = PixelFormat.TRANSPARENT;
+        customViewGroup view = new customViewGroup(this);
+        manager.addView(view, localLayoutParams);
         main_container = findViewById(R.id.main_layout);
+        final int[] mSongs = new int[] {R.raw.poomjaibot_eye_face};
+        for (int i =0 ; i< mSongs.length;i++)
 
-//        call_btn = findViewById(R.id.call_btn);
-//        call_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                robot.getAllContact();
-//                robot.startTelepresence(robot.getAdminInfo().getName(),robot.getAdminInfo().getUserId());
-//            }
-//        });
+        {
+            try {
+                String path = Environment.getExternalStorageDirectory() + "/poomjaibotvid";
+                File dir = new File(path);
+                if (dir.mkdirs() || dir.isDirectory()) {
+                    String str_song_name = i + ".mp4";
 
+                }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        }
 
 //        changelayout(fragment_temiface.newInstance());
 
@@ -103,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(getApplicationContext(), "Internet Is Not Connected", Toast.LENGTH_SHORT).show();
         }
         changeMain_Menu();
+
     }
 
     public void change_temiface()
@@ -176,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onStart() {
         super.onStart();
         robot = robot.getInstance(); // get an instance of the robot in order to begin using its features.
+        robot.hideTopBar();
         robot.addOnRobotReadyListener(this);
 //        robot.addNlpListener(this);
         robot.addOnBeWithMeStatusChangedListener(this);
@@ -225,6 +262,25 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onDetectionStateChanged(int i) {
+
+    }
+
+    private void CopyRAWtoExternalMem(int id, String path) throws IOException{
+
+        InputStream in = getResources().openRawResource(id);
+        FileOutputStream out = new FileOutputStream(path);
+        byte[] buff = new byte[1024];
+        int read = 0;
+        try{
+            while ((read=in.read(buff))>0)
+            {
+                out.write(buff,0,read);
+            }
+        } finally
+        {
+            in.close();
+            out.close();
+        }
 
     }
 }

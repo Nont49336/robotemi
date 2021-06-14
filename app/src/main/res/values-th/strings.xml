@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ภูมิใจบอท</string>
+    <string name="scan">แสกน</string>
+    <string name="qr_code_to_check_in">คิวอาร์โค้ดสำหรับลงทะเบียน</string>
+    <string name="submit">ส่ง</string>
+    <string name="write_your_review">เขียนรีวิว...</string>
+    <string name="how_was_you_experience">ความรู้สึกหลังการใช้งานของท่าน?</string>
+    <string name="customer_service">ติดต่อศูนย์บริการลูกค้า</string>
+    <string name="ask_any_question_contact_customer_service">สอบถามข้อมูลหรือติดต่อศูนย์บริการลูกค้าได้ที่นี่</string>
+    <string name="emergency_call">ติดต่อศูนย์บริการฉุกเฉิน</string>
+    <string name="please_contact_us_in_case_of_emergency">กรุณาติดต่อเราในกรณีฉุกเฉินเท่านั้น</string>
+    <string name="qr_thai_chana">ไทยชนะ</string>
+    <string name="Directory">แผนที่นำทาง</string>
+    <string name="Promotion">โปรโมชั่นต่างๆ</string>
+    <string name="Event">อีเวนต์ต่างๆ</string>
+    <string name="Rated_Us">ให้คะแนนความพึงพอใจ</string>
+    <string name="eng">ไทย</string>
+</resources>

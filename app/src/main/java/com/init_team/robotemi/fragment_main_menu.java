@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -37,7 +38,6 @@ public class fragment_main_menu extends Fragment {
     private RecyclerView mRecyclerView;
     RecyclerAdapter menu_adapter;
     private List<menu_item> menu_item_lst = new ArrayList<>();
-    menu_item menu_item_data = new menu_item();
 
 
 
@@ -45,6 +45,7 @@ public class fragment_main_menu extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
+
         View view = inflater.inflate(R.layout.fragment_menupage_recycler,container,false);
         mRecyclerView = view.findViewById(R.id.pagelist_recyclerview_menupage);
         return view;
@@ -53,20 +54,19 @@ public class fragment_main_menu extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        menu_item_data.add("Thai Chana",R.drawable.fragment_thaichana_icon_button);
-        menu_item_lst.add(menu_item_data);
-        menu_item_data.add("Directory",R.drawable.fragment_directory_icon_button);
-        menu_item_lst.add(menu_item_data);
-        menu_item_data.add("Event",R.drawable.fragment_event_icon_button);
-        menu_item_lst.add(menu_item_data);
-        menu_item_data.add("Promotion",R.drawable.fragment_promotion_icon_button);
-        menu_item_lst.add(menu_item_data);
-        menu_item_data.add("rated us",R.drawable.fragment_ratedus_icon_button);
-        menu_item_lst.add(menu_item_data);
-        Log.e("test",menu_item_lst.toString());
+        ((Mainmenu_activity) getActivity()).make_setting_visible();
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.qr_thai_chana), R.drawable.fragment_thaichana_icon_button, R.drawable.fragment_bg_button_orangered));
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.Event), R.drawable.fragment_event_icon_button, R.drawable.fragment_bg_button_redpurple));
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.Directory), R.drawable.fragment_directory_icon_button, R.drawable.fragment_bg_button_mintblue));
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.Rated_Us), R.drawable.fragment_ratedus_icon_button, R.drawable.fragment_bg_button_greybrown));
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.Promotion), R.drawable.fragment_promotion_icon_button, R.drawable.fragment_bg_button_orangered));
         RecyclerAdapter menu_adapter = new RecyclerAdapter(this,menu_item_lst);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),3));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2,GridLayoutManager.HORIZONTAL,false));
         mRecyclerView.setAdapter(menu_adapter);
-
+    }
+    public void onStop()
+    {
+        super.onStop();
+        menu_item_lst.clear();
     }
 }

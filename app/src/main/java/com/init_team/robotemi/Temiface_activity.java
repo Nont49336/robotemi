@@ -10,11 +10,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -58,12 +61,27 @@ public class Temiface_activity extends AppCompatActivity
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         int rawId = getResources().getIdentifier("poomjaibot_eye_face",  "raw", getPackageName());
         String vid_uri = "android.resources://"+getPackageName()+"/"+rawId;
         super.onCreate(savedInstanceState);
         temiface = findViewById(R.id.eye_video_facepoomjaibotpage);
         setContentView(R.layout.fragment_facepoomjaibotpage); // poomjai_bot face as 1 activity for vid switching and sound switching.;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        WindowManager manager = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+        localLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        localLayoutParams.gravity = Gravity.TOP;
+        localLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
+// this is to enable the notification to recieve touch events
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+// Draws over status bar
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        localLayoutParams.width = localLayoutParams.MATCH_PARENT;
+        localLayoutParams.height = (int) (55 * getResources().getDisplayMetrics().scaledDensity);
+        localLayoutParams.format = PixelFormat.TRANSPARENT;
+        customViewGroup view = new customViewGroup(this);
+        manager.addView(view, localLayoutParams);
 //        temiface.setVideoPath(vid_uri);
         temiface.requestFocus();
         temiface.start();
@@ -135,6 +153,12 @@ public class Temiface_activity extends AppCompatActivity
         Intent intent = new Intent(Temiface_activity.this,Mainmenu_activity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onStart()
+    {
+        super.onStart();
+        robot.hideTopBar();
     }
      // place app on the top bar for quick access shortcut
     public void onRobotReady(boolean isReady) {

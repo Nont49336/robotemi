@@ -20,6 +20,7 @@ public class fragment_directorypage extends Fragment {
         }
         return fragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -29,5 +30,7 @@ public class fragment_directorypage extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
+        ((Mainmenu_activity)getActivity()).make_home_visible();
     }
+
 }
