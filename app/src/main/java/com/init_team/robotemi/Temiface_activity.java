@@ -112,7 +112,7 @@ public class Temiface_activity extends AppCompatActivity
                 mp.reset();
             }
         });
-        play_sound(R.raw.poomjaibot_sound);
+        play_sound(R.raw.poomjaibot_sound);//after the temiface change
 
 
     }
