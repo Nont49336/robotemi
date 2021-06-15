@@ -108,24 +108,24 @@ public class MainActivity extends AppCompatActivity implements
         customViewGroup view = new customViewGroup(this);
         manager.addView(view, localLayoutParams);
         main_container = findViewById(R.id.main_layout);
-        final int[] mSongs = new int[] {R.raw.poomjaibot_eye_face};
-        for (int i =0 ; i< mSongs.length;i++)
-
-        {
-            try {
-                String path = Environment.getExternalStorageDirectory() + "/poomjaibotvid";
-                File dir = new File(path);
-                if (dir.mkdirs() || dir.isDirectory()) {
-                    String str_song_name = i + ".mp4";
-
-                }
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-
-        }
+//        final int[] mSongs = new int[] {R.raw.poomjaibot_eye_face};
+//        for (int i =0 ; i< mSongs.length;i++)
+//
+//        {
+//            try {
+//                String path = Environment.getExternalStorageDirectory() + "/poomjaibotvid";
+//                File dir = new File(path);
+//                if (dir.mkdirs() || dir.isDirectory()) {
+//                    String str_song_name = i + ".mp4";
+//
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
 //        changelayout(fragment_temiface.newInstance());
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
             Toast.makeText(getApplicationContext(), "Internet Is Not Connected", Toast.LENGTH_SHORT).show();
         }
-        changeMain_Menu();
+        change_temiface();
 
     }
 
@@ -265,22 +265,22 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    private void CopyRAWtoExternalMem(int id, String path) throws IOException{
-
-        InputStream in = getResources().openRawResource(id);
-        FileOutputStream out = new FileOutputStream(path);
-        byte[] buff = new byte[1024];
-        int read = 0;
-        try{
-            while ((read=in.read(buff))>0)
-            {
-                out.write(buff,0,read);
-            }
-        } finally
-        {
-            in.close();
-            out.close();
-        }
-
-    }
+//    private void CopyRAWtoExternalMem(int id, String path) throws IOException{
+//
+//        InputStream in = getResources().openRawResource(id);
+//        FileOutputStream out = new FileOutputStream(path);
+//        byte[] buff = new byte[1024];
+//        int read = 0;
+//        try{
+//            while ((read=in.read(buff))>0)
+//            {
+//                out.write(buff,0,read);
+//            }
+//        } finally
+//        {
+//            in.close();
+//            out.close();
+//        }
+//
+//    }
 }

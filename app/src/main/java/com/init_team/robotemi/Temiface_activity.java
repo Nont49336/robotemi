@@ -24,6 +24,7 @@ import android.widget.VideoView;
 import com.robotemi.sdk.Robot;
 
 import java.io.IOException;
+import java.net.URI;
 
 // declaration of permission and layout should be in temiface?
 public class Temiface_activity extends AppCompatActivity
@@ -52,7 +53,7 @@ public class Temiface_activity extends AppCompatActivity
     private Context sound_context=this;
     //end of permission declaration
     private Robot robot;
-    private VideoView temiface;
+    VideoView temiface;
     private MediaPlayer sound_player = new MediaPlayer();
 //    private MediaController vid_player = new MediaController(this);
 
@@ -61,11 +62,8 @@ public class Temiface_activity extends AppCompatActivity
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        int rawId = getResources().getIdentifier("poomjaibot_eye_face",  "raw", getPackageName());
-        String vid_uri = "android.resources://"+getPackageName()+"/"+rawId;
         super.onCreate(savedInstanceState);
-        temiface = findViewById(R.id.eye_video_facepoomjaibotpage);
+
         setContentView(R.layout.fragment_facepoomjaibotpage); // poomjai_bot face as 1 activity for vid switching and sound switching.;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         WindowManager manager = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
@@ -82,9 +80,15 @@ public class Temiface_activity extends AppCompatActivity
         localLayoutParams.format = PixelFormat.TRANSPARENT;
         customViewGroup view = new customViewGroup(this);
         manager.addView(view, localLayoutParams);
-//        temiface.setVideoPath(vid_uri);
-        temiface.requestFocus();
-        temiface.start();
+        temiface = findViewById(R.id.eye_video_facepoomjaibotpage);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.poomjaibot_eye_face);
+        temiface.setVideoURI(uri);
+        temiface.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                temiface.start();
+            }
+        });
         temiface.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -95,11 +99,7 @@ public class Temiface_activity extends AppCompatActivity
                 return false;
             }
         });
-      //  vid_player.setAnchorView(temiface);
-      //  temiface.setMediaController(vid_player);
-      //  temiface.setVideoURI(vid_uri);
-       // temiface.requestFocus();
-       // temiface.start();
+
         sound_player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -112,20 +112,9 @@ public class Temiface_activity extends AppCompatActivity
                 mp.reset();
             }
         });
-//        temiface.setOnTouchListener(new View.OnTouchListener() {
-//            @SuppressLint("ClickableViewAccessibility")
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_BUTTON_PRESS)
-//                {
-//                    switch_to_mainmenu_activity();
-//                    return true;
-//                }
-//
-//                return false;
-//            }
-//        });
         play_sound(R.raw.poomjaibot_sound);
+
+
     }
 
     private void switch_to_mainmenu_activity()
@@ -158,6 +147,7 @@ public class Temiface_activity extends AppCompatActivity
     public void onStart()
     {
         super.onStart();
+        robot = robot.getInstance();
         robot.hideTopBar();
     }
      // place app on the top bar for quick access shortcut
