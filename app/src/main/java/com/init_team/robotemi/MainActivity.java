@@ -82,12 +82,11 @@ public class MainActivity extends AppCompatActivity implements
             // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
         }
-       Log.e("Storage Permission","permission granted");
+
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        Robot robot = new Robot(getApplicationContext());
         verifyStoragePermissions(this);
         PACKAGE_NAME = getApplicationContext().getPackageName();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -127,8 +126,6 @@ public class MainActivity extends AppCompatActivity implements
 //
 //        }
 
-//        changelayout(fragment_temiface.newInstance());
-
         if (isNetwork(getApplicationContext())){
 
             Toast.makeText(getApplicationContext(), "Internet Connected", Toast.LENGTH_SHORT).show();
@@ -146,11 +143,6 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent = new Intent(MainActivity.this,Temiface_activity.class);
         startActivity(intent);
 
-    }
-    public void changelayout(Fragment fragment){
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_layout,fragment)
-                .commit();
     }
     public void changeMain_Menu(){
         Intent intent = new Intent(MainActivity.this,Mainmenu_activity.class);

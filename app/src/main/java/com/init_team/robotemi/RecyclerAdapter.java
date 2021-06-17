@@ -54,6 +54,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                     if(position == 2) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_directorypage.newInstance());}
                     if(position == 3) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_rateduspage.newInstance());}
 //                    if(position == 4) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_promotion.newInstance());}
+//                    if(position == 5){((Mainmenu_activity) v.getContext()).showChangeLanguageDialog();}
                 }
                 return false;
             }

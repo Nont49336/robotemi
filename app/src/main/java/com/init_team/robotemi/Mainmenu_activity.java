@@ -10,10 +10,12 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,11 +23,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
@@ -56,6 +60,9 @@ public class Mainmenu_activity extends AppCompatActivity implements
     private ImageButton home_btn;
     private List<UserInfo> all_contact;
     private CardView change_lang;
+    private TextView cs_call_popup;
+    private TextView cs_cancel_popup;
+
 
 
     public void onStart() {
@@ -108,8 +115,9 @@ public class Mainmenu_activity extends AppCompatActivity implements
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    cs = robot.getAdminInfo();
-                    robot.startTelepresence(cs.getName(), cs.getUserId());
+                    showCScallDialog();
+//                    cs = robot.getAdminInfo();
+//                    robot.startTelepresence(cs.getName(), cs.getUserId());
                     return true;
                 }
                 return false;
@@ -121,9 +129,8 @@ public class Mainmenu_activity extends AppCompatActivity implements
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    all_contact = robot.getAllContact();
-//                    Log.e("Username:", all_contact.toString());
-                    robot.startTelepresence("Namwhan", "40a79d993531f4e830e5ec57c0a4b7c0");
+                    
+//                    robot.startTelepresence("Namwhan", "40a79d993531f4e830e5ec57c0a4b7c0");
                     return true;
                 }
                 return false;
@@ -215,7 +222,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
         }
     }
 
-    private void showChangeLanguageDialog() {
+    public void showChangeLanguageDialog() {
         final String[] lang_list = {"Eng", "ไทย"};
         AlertDialog.Builder lang_builder = new AlertDialog.Builder(Mainmenu_activity.this);
         lang_builder.setTitle("Choose language...");
@@ -237,7 +244,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
 
     }
 
-    private void setLocale(String lang) {
+    public void setLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -248,10 +255,62 @@ public class Mainmenu_activity extends AppCompatActivity implements
         editor.apply();
     }
 
-    private void loadLocale() {
+    public void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_lang", "");
         setLocale(language);
+    }
+    private void showCScallDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Mainmenu_activity.this,R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(Mainmenu_activity.this).inflate(
+                R.layout.customerservice_popup,
+                        (ConstraintLayout)findViewById(R.id.constraintlayout_customerservice_popup));
+        builder.setView(view);
+        view.findViewById(R.id.buttonlist_linearlayout_customerservice_popup);
+        view.findViewById(R.id.asklist_linearlayout_customerservice_popup);
+        view.findViewById(R.id.ask_text_customerservice_popup);
+        view.findViewById(R.id.explain_text_customerservice_popup);
+        view.findViewById(R.id.call_button_customerservice_popup);
+        view.findViewById(R.id.cancel_button_customerservice_popup);
+        final AlertDialog alertDialog = builder.create();
+        view.findViewById(R.id.call_button_customerservice_popup).setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    cs = robot.getAdminInfo();
+                    robot.startTelepresence(cs.getName(), cs.getUserId());
+                    alertDialog.dismiss();
+                    return true;
+                }
+                return false;
+            }
+        });
+//
+//        view.findViewById(R.id.cancel_button_emergencycall_popup).setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if(event.getAction() == MotionEvent.ACTION_DOWN)
+//                {
+//                    alertDialog.dismiss();
+//                }
+//                return false;
+//            }
+//        });
+
+        if(alertDialog.getWindow() != null)
+        {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        Log.e("test dialog","dialog called" );
+        alertDialog.show();
+
+    }
+    private void showEmercallDialog()
+    {
+
     }
 
 //    @Override
