@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements
         OnBeWithMeStatusChangedListener,
         OnGoToLocationStatusChangedListener,
         OnLocationsUpdatedListener,
-        OnBatteryStatusChangedListener,
         OnConstraintBeWithStatusChangedListener,
         OnDetectionStateChangedListener
 {
@@ -213,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements
 //        robot.addWakeupWordListener(this);
         robot.addTtsListener(this);
         robot.addOnLocationsUpdatedListener(this);
-        robot.addOnBatteryStatusChangedListener(this);
         robot.addOnConstraintBeWithStatusChangedListener(this);
         robot.addOnDetectionStateChangedListener(this);
 
@@ -242,10 +240,7 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    public void onBatteryStatusChanged(@org.jetbrains.annotations.Nullable BatteryData batteryData) {
 
-    }
 
     @Override
     public void onConstraintBeWithStatusChanged(boolean b) {

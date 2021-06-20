@@ -32,6 +32,7 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 
 import com.robotemi.sdk.Robot;
 import com.robotemi.sdk.UserInfo;
@@ -43,13 +44,14 @@ import com.robotemi.sdk.telepresence.CallState;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class Mainmenu_activity extends AppCompatActivity implements
         OnTelepresenceEventChangedListener {
-
     Handler handler;
     Runnable r;
     private ImageView cs_call_img_btn;
@@ -59,9 +61,8 @@ public class Mainmenu_activity extends AppCompatActivity implements
     private ImageButton setting_btn;
     private ImageButton home_btn;
     private List<UserInfo> all_contact;
-    private CardView change_lang;
-    private TextView cs_call_popup;
-    private TextView cs_cancel_popup;
+    private TextView time_text;
+
 
 
 
@@ -70,7 +71,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
         robot = robot.getInstance();
         robot.hideTopBar();
         robot.addOnTelepresenceEventChangedListener(this);
-
+        robot.getBatteryData();
     }
     @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle savedInstanceStated) {
@@ -83,6 +84,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
         WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
         localLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
         localLayoutParams.gravity = Gravity.TOP;
+        getCurrentTime();
         localLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
 // this is to enable the notification to recieve touch events
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
@@ -93,23 +95,12 @@ public class Mainmenu_activity extends AppCompatActivity implements
         localLayoutParams.format = PixelFormat.TRANSPARENT;
         customViewGroup view = new customViewGroup(this);
         manager.addView(view, localLayoutParams);
-
-        change_lang = findViewById(R.id.language_cardview_fixpage);
+//        time_text.setText(getCurrentTime());
         setting_btn = findViewById(R.id.setting_button_fixpage);
         home_btn = findViewById(R.id.home_button_fixpage);
         cs_call_img_btn = findViewById(R.id.customer_service_button_fixpage);
         emer_call_img_btn = findViewById(R.id.emergency_call_button_fixpage);
         change_menu_page_container(fragment_main_menu.newInstance());
-        change_lang.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    showChangeLanguageDialog();
-                    return true;
-                }
-                return false;
-            }
-        });
         cs_call_img_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -129,7 +120,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    
+                    showEmercallDialog();
 //                    robot.startTelepresence("Namwhan", "40a79d993531f4e830e5ec57c0a4b7c0");
                     return true;
                 }
@@ -140,7 +131,7 @@ public class Mainmenu_activity extends AppCompatActivity implements
         r = new Runnable() {
             @Override
             public void run() {
-
+                
                 change_to_temiface();
             }
         };
@@ -207,9 +198,13 @@ public class Mainmenu_activity extends AppCompatActivity implements
         home_btn.setVisibility(View.VISIBLE);
     }
 
-    public void onStop() {
+    protected void onStop() {
         super.onStop();
         robot.removeOnTelepresenceEventChangedListener(this);
+    }
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 
     @Override
@@ -263,19 +258,49 @@ public class Mainmenu_activity extends AppCompatActivity implements
     private void showCScallDialog()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mainmenu_activity.this,R.style.AlertDialogTheme);
-        View view = LayoutInflater.from(Mainmenu_activity.this).inflate(
-                R.layout.customerservice_popup,
-                        (ConstraintLayout)findViewById(R.id.constraintlayout_customerservice_popup));
+        View view = LayoutInflater.from(Mainmenu_activity.this).inflate(R.layout.customerservice_popup,
+                (ConstraintLayout) findViewById(R.id.constraintlayout_customerservice_popup));
         builder.setView(view);
-        view.findViewById(R.id.buttonlist_linearlayout_customerservice_popup);
-        view.findViewById(R.id.asklist_linearlayout_customerservice_popup);
-        view.findViewById(R.id.ask_text_customerservice_popup);
-        view.findViewById(R.id.explain_text_customerservice_popup);
-        view.findViewById(R.id.call_button_customerservice_popup);
-        view.findViewById(R.id.cancel_button_customerservice_popup);
         final AlertDialog alertDialog = builder.create();
         view.findViewById(R.id.call_button_customerservice_popup).setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    cs = robot.getAdminInfo();
+                    robot.startTelepresence(cs.getName(), cs.getUserId());
+                    alertDialog.dismiss();
+                    return true; 
+                }
+                return false;
+            }
+        });
+        view.findViewById(R.id.cancel_button_customerservice_popup).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    alertDialog.dismiss();
+                    return true;
+                }
+                return false;
+            }
+        });
+        if(alertDialog.getWindow() != null)
+        {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+            alertDialog.show();
+
+    }
+    private void showEmercallDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Mainmenu_activity.this,R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(Mainmenu_activity.this).inflate(R.layout.emergencycall_popup,
+                (ConstraintLayout) findViewById(R.id.constraintlayout_emergencycall_popup));
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+        view.findViewById(R.id.call_button_emergencycall_popup).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN)
@@ -288,31 +313,28 @@ public class Mainmenu_activity extends AppCompatActivity implements
                 return false;
             }
         });
-//
-//        view.findViewById(R.id.cancel_button_emergencycall_popup).setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_DOWN)
-//                {
-//                    alertDialog.dismiss();
-//                }
-//                return false;
-//            }
-//        });
-
+        view.findViewById(R.id.cancel_button_emergencycall_popup).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    alertDialog.dismiss();
+                    return true;
+                }
+                return false;
+            }
+        });
         if(alertDialog.getWindow() != null)
         {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
-        Log.e("test dialog","dialog called" );
         alertDialog.show();
-
     }
-    private void showEmercallDialog()
+    private void getCurrentTime()
     {
-
+         String time = new SimpleDateFormat("hh:mm",Locale.getDefault()).format(new Date());
+         Log.e("time",time);
     }
-
 //    @Override
 //    public void onRobotReady(boolean isReady) {
 //        if (isReady) {

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.MotionEventCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -47,16 +48,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                if(event.getAction() == MotionEvent.ACTION_UP)
                 {
                     if(position == 0) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_qr_thaichana.newInstance());}
 //                  if(position == 1) {((Mainmenu_activity) v.getContext()).change_menu_page_container(.newInstance());}
                     if(position == 2) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_directorypage.newInstance());}
                     if(position == 3) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_rateduspage.newInstance());}
 //                    if(position == 4) {((Mainmenu_activity) v.getContext()).change_menu_page_container(fragment_promotion.newInstance());}
-//                    if(position == 5){((Mainmenu_activity) v.getContext()).showChangeLanguageDialog();}
+                    if(position == 5){((Mainmenu_activity) v.getContext()).showChangeLanguageDialog();}
+                    return true;
                 }
-                return false;
+                return true;
             }
         });
 

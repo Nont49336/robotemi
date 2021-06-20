@@ -9,7 +9,7 @@
     android:layout_width="280dp"
     android:layout_height="270dp"
     android:layout_rowWeight="1"
-    android:layout_margin="15dp"
+    android:layout_margin= "15dp"
     card_view:cardCornerRadius="20dp"
     card_view:cardElevation="4dp"
     android:orientation="horizontal"

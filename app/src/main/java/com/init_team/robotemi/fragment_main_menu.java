@@ -60,6 +60,7 @@ public class fragment_main_menu extends Fragment {
         menu_item_lst.add(new menu_item(getResources().getString(R.string.Directory), R.drawable.fragment_directory_icon_button, R.drawable.fragment_bg_button_mintblue));
         menu_item_lst.add(new menu_item(getResources().getString(R.string.Rated_Us), R.drawable.fragment_ratedus_icon_button, R.drawable.fragment_bg_button_greybrown));
         menu_item_lst.add(new menu_item(getResources().getString(R.string.Promotion), R.drawable.fragment_promotion_icon_button, R.drawable.fragment_bg_button_orangered));
+        menu_item_lst.add(new menu_item(getResources().getString(R.string.lang),R.drawable.fragment_language_icon_button,R.drawable.fragment_bg_button_redpurple));
         RecyclerAdapter menu_adapter = new RecyclerAdapter(this,menu_item_lst);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2,GridLayoutManager.HORIZONTAL,false));
         mRecyclerView.setAdapter(menu_adapter);

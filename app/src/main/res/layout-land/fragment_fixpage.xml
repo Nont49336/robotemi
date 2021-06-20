@@ -9,8 +9,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@drawable/fragment_background"
-    android:orientation="horizontal"
-    tools:ignore="MissingDefaultResource">
+    android:orientation="horizontal">
 
     <!--*** PAGE CONTAINER ***-->
     <FrameLayout
@@ -25,9 +24,10 @@
         app:layout_constraintWidth_percent="0.65">
 
         <!--container of
-            'menupage','thaichanapage','eventpage','eventcontentpage',
-            'directorypage','rateduspage','promotionpage','promotioncontentpage',
-            'pointearningpage'-->
+            'menupage','thaichanapage','eventpage','eventdescriptpage',
+            'directorypage','promotionpage','promotiondescriptpage',
+            'rateduspage'-->
+
     </FrameLayout>
 
 
@@ -54,13 +54,12 @@
         android:id="@+id/customer_service_text_fixpage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
+        android:textSize="40sp"
         android:elevation="32dp"
         android:fontFamily="@font/db_helvethaicamon_x_med_cond"
         android:gravity="center"
-        android:text="@string/customer_service"
+        android:text="Customer Service"
         android:textColor="#342A47"
-        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/customer_service_button_fixpage"
         app:layout_constraintEnd_toEndOf="@+id/customer_service_button_fixpage"
@@ -74,13 +73,12 @@
         android:id="@+id/ask_any_question_customerservice_text_fixpage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
+        android:textSize="18sp"
         android:elevation="32dp"
         android:fontFamily="@font/db_helvethaicamon_x_bd_cond"
         android:gravity="center"
-        android:text="@string/ask_any_question_contact_customer_service"
+        android:text="Ask any question? Contact customer service."
         android:textColor="#524765"
-        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/customer_service_button_fixpage"
         app:layout_constraintEnd_toEndOf="@+id/customer_service_button_fixpage"
@@ -112,13 +110,12 @@
         android:id="@+id/emergency_call_text_fixpage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
+        android:textSize="40sp"
         android:elevation="32dp"
         android:fontFamily="@font/db_helvethaicamon_x_med_cond"
         android:gravity="center"
-        android:text="@string/emergency_call"
+        android:text="Emergency Call"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/emergency_call_button_fixpage"
         app:layout_constraintEnd_toEndOf="@+id/emergency_call_button_fixpage"
@@ -132,13 +129,12 @@
         android:id="@+id/case_of_emergency_call_text_fixpage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
+        android:textSize="18sp"
         android:elevation="32dp"
         android:fontFamily="@font/db_helvethaicamon_x_bd_cond"
         android:gravity="center"
-        android:text="@string/please_contact_us_in_case_of_emergency"
+        android:text="Please, Contact us in case of emergency."
         android:textColor="#B4B4B4"
-        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/emergency_call_button_fixpage"
         app:layout_constraintEnd_toEndOf="@+id/emergency_call_button_fixpage"
@@ -158,13 +154,12 @@
         android:src="@drawable/fragment_frame_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.4"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHeight_percent="0.21"
+        app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintWidth_percent="0.23" />
-
+        app:layout_constraintWidth_percent="0.12" />
 
 
     <ImageView
@@ -172,115 +167,51 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
-        android:src="@drawable/fragment_seaconsquare_logo"
         android:elevation="36dp"
+        android:src="@drawable/fragment_seaconsquare_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.066"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/language_cardview_fixpage"
-            android:layout_margin="15dp"
-            card_view:cardCornerRadius="10dp"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintWidth_percent="0.1"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            card_view:cardElevation="36dp"
-            android:background="#00ffffff"
-            app:layout_constraintBottom_toBottomOf="@+id/seaconsquare_logo_fixpage"
-            app:layout_constraintEnd_toEndOf="@+id/seaconsquare_logo_fixpage"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:id="@+id/language_linearlayout_fixpage"
-                android:padding="3dp"
-                android:weightSum="100"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="#DFDFDF">
-
-                <ImageView
-                    android:id="@+id/language_global_icon_fixpage"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="#00ffffff"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/fragment_language_icon_button"
-                    android:layout_weight="40" />
-
-                <TextView
-                    android:id="@+id/language_text_fixpage"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="42"
-                    android:autoSizeTextType="uniform"
-                    android:fontFamily="@font/nunito_bold"
-                    android:gravity="center"
-                    android:text="@string/eng"
-                    android:textColor="#808080"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/language_arrow_icon_fixpage"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="#00ffffff"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/fragment_arrow_icon_button"
-                    android:layout_weight="12" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    <!--*** LANGUAGE SORT CONTAINER (Visible) ***-->
-    <!--click lauguage button   android:visibility="visible"-->
-    <!--ELSE              android:visibility="gone"-->
     <LinearLayout
-        android:id="@+id/languagesort_container_fixpage"
-        android:visibility="gone"
+        android:id="@+id/battery_time_linearlayout_fixpage"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="34dp"
-        android:padding="20dp"
-        android:orientation="vertical"
-        android:background="@drawable/fragment_bg_white_stroke_blacktrans"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.2"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintTop_toBottomOf="@+id/seaconsquare_logo_fixpage"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:weightSum="100"
+        android:elevation="40dp"
+        android:paddingRight="10dp"
+        card_view:layout_constraintBottom_toBottomOf="@+id/seaconsquare_logo_fixpage"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHeight_percent="0.066"
+        card_view:layout_constraintHorizontal_bias="1.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintWidth_percent="0.2">
+
+        <ImageView
+            android:id="@+id/battery_icon_fixpage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:background="#00ffffff"
+            android:scaleType="fitStart"
+            android:src="@drawable/fragment_battery_80percent_icon" />
 
         <TextView
-            android:id="@+id/languagesort_english_text_fixpage"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="15dp"
+            android:id="@+id/time_text_fixpage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:textSize="16sp"
             android:fontFamily="@font/nunito_bold"
-            android:gravity="left"
-            android:text="ENGLISH"
-            android:textColor="#808080"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/languagesort_thai_text_fixpage"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="15dp"
-            android:fontFamily="@font/nunito_bold"
-            android:gravity="left"
-            android:text=""
-            android:textColor="#808080"
+            android:gravity="center"
+            android:text="hh:mm"
+            android:textColor="#7C65A4"
             android:textStyle="bold" />
     </LinearLayout>
-
 
     <ImageView
         android:id="@+id/frame_left_fixpage"
@@ -332,14 +263,15 @@
         android:elevation="44dp"
         android:gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/fragment_settings_icon_button"
+        android:src="@drawable/fragment_exit_icon_button"
         app:layout_constraintBottom_toBottomOf="@+id/frame_left_fixpage"
         app:layout_constraintEnd_toEndOf="@+id/frame_left_fixpage"
-        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/frame_left_fixpage"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintWidth_percent="0.04" />
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintWidth_percent="0.12" />
 
 
     <!--*** POP-UP Confirm CONTAINER (Visible) ***-->
@@ -355,5 +287,19 @@
 
         <!--container of popup-->
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/battery_text_fixpage"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center_vertical|right"
+        android:text="bbb%"
+        android:textColor="#968EA5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="685dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

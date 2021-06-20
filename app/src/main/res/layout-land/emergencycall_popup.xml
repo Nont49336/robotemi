@@ -13,17 +13,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout_emergencycall_popup"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="700dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:background="@drawable/fragment_bg_redtrans"
         android:orientation="horizontal"
-        card_view:layout_constraintWidth_percent="0.7"
-        card_view:layout_constraintHeight_percent="0.7"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHeight_percent="0.7"
         card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent">
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintWidth_percent="0.7">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_emergencycall_popup"
@@ -46,7 +46,7 @@
                 <LinearLayout
                     android:id="@+id/asklist_linearlayout_emergencycall_popup"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="70"
                     android:background="#ffffff"
@@ -58,9 +58,8 @@
                     <TextView
                         android:id="@+id/ask_text_emergencycall_popup"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="20dp"
                         android:layout_weight="25"
-                        android:textSize="48sp"
                         android:background="#00ffffff"
                         android:elevation="4dp"
                         android:fontFamily="@font/db_helvethaicamon_x_cond"
@@ -69,15 +68,15 @@
                         android:paddingRight="15dp"
                         android:text="Call Security?"
                         android:textColor="#F9636B"
+                        android:textSize="48sp"
                         android:textStyle="bold" />
 
                     <!--android:text="('Start Date' - 'End Date')"-->
                     <TextView
                         android:id="@+id/explain_text_emergencycall_popup"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="20dp"
                         android:layout_weight="15"
-                        android:textSize="18sp"
                         android:background="#00ffffff"
                         android:elevation="4dp"
                         android:fontFamily="@font/nunito_bold"
@@ -86,31 +85,32 @@
                         android:paddingRight="15dp"
                         android:text="This will start with video call to security and center service."
                         android:textColor="#968EA5"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
 
                     <TextView
                         android:id="@+id/warning_text_emergencycall_popup"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="20dp"
                         android:layout_weight="15"
-                        android:textSize="18sp"
                         android:background="#00ffffff"
                         android:elevation="4dp"
-                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/nunito_black"
                         android:gravity="center"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:text="Warning:"
                         android:textColor="#F9636B"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/payfine_text_emergencycall_popup"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="18dp"
                         android:layout_weight="15"
-                        android:textSize="18sp"
                         android:background="#00ffffff"
                         android:elevation="4dp"
                         android:fontFamily="@font/nunito_bold"
@@ -119,14 +119,14 @@
                         android:paddingRight="15dp"
                         android:text="You may have to pay fine if make disturbances"
                         android:textColor="#F9636B"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/providefalseinfo_text_emergencycall_popup"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="18dp"
                         android:layout_weight="15"
-                        android:textSize="18sp"
                         android:background="#00ffffff"
                         android:elevation="4dp"
                         android:fontFamily="@font/nunito_bold"
@@ -135,6 +135,7 @@
                         android:paddingRight="15dp"
                         android:text="or provide false information."
                         android:textColor="#F9636B"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -142,47 +143,47 @@
                 <LinearLayout
                     android:id="@+id/buttonlist_linearlayout_emergencycall_popup"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="30"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:background="#DFDDE4"
                     android:gravity="center"
                     android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:weightSum="100">
 
                     <TextView
                         android:id="@+id/cancel_button_emergencycall_popup"
-                        android:layout_width="0dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="50"
-                        android:elevation="28dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="10dp"
+                        android:layout_weight="50"
                         android:background="@drawable/fragment_bg_button_white"
+                        android:elevation="28dp"
                         android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
                         android:text="Cancel"
                         android:textColor="#968EA5"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/call_button_emergencycall_popup"
-                        android:layout_width="0dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="50"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="20dp"
-                        android:elevation="28dp"
+                        android:layout_weight="50"
                         android:background="@drawable/fragment_bg_button_red"
+                        android:elevation="28dp"
                         android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
                         android:text="Call"
                         android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
